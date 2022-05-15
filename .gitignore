@@ -1,0 +1,4 @@
+# dependencies and remoove 
+/node_modules
+/hce-videos
+/public/moged

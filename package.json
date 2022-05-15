@@ -1,0 +1,50 @@
+{
+  "name": "moged-car-rent",
+  "version": "1.0.0",
+  "description": "hahu computer engineering's flagship product moged is a car rental application that connects owners and carusers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hahutech/moged-v.0.1.git"
+  },
+  "keywords": [
+    "moged",
+    "car-rent",
+    "bahirdar",
+    "beta"
+  ],
+  "author": "https://hahucomputers.com/",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hahutech/moged-v.0.1/issues"
+  },
+  "homepage": "https://github.com/hahutech/moged-v.0.1#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "formidable": "^1.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "3.6.9",
+    "mongoose": "^6.0.12",
+    "mongoose-gridfs": "^1.3.0",
+    "morgan": "^1.9.1",
+    "mqtt": "^4.3.7",
+    "node-media-server": "^2.3.9",
+    "nodemailer": "^6.2.1",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "twilio": "^3.33.1",
+    "uuid": "^3.4.0",
+    "ws": "^8.5.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.3"
+  }
+}
