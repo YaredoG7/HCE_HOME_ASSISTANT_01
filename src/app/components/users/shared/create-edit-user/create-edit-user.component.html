@@ -1,0 +1,29 @@
+<section *ngIf="user">
+  <mat-form-field>
+    <input matInput placeholder="Name" autofocus [(ngModel)]="user.name">
+  </mat-form-field>
+
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Email" [(ngModel)]="user.email">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Phone" [(ngModel)]="user.phone">
+    </mat-form-field>
+  </div>
+</section>
+
+<section *ngIf="user">
+  <button mat-raised-button color="primary" (click)="onSave()">
+    <mat-icon>done</mat-icon> Save
+  </button>
+    <button *ngIf="editMode == 0" mat-button routerLink="/users">
+      Cancel
+    </button>
+    <button *ngIf="editMode == 1" mat-button routerLink="/users/details/{{user.id}}">
+      Cancel
+    </button>
+</section>

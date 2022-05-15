@@ -1,0 +1,32 @@
+<!-- <h1 class="title">Alerts</h1> -->
+  <div *ngIf="data.alert_danger" class="alert alert-danger">
+    <mat-icon></mat-icon> <strong>Error!</strong> {{data.message}}
+  </div>
+
+  <div *ngIf="data.alert_info" class="alert alert-info">
+    <mat-icon></mat-icon> <strong>Info!</strong> {{data.message}}
+  </div>
+
+  <div *ngIf="data.alert_success" class="alert alert-success">
+    <mat-icon></mat-icon> <strong>Success!</strong> {{data.message}}
+  </div>
+
+  <div *ngIf="data.alert_warn" class="alert alert-warning">
+    <mat-icon></mat-icon> <strong>Warning!</strong> {{data.message}}
+  </div>
+<!-- <h1 class="title">Callouts</h1> -->
+  <div *ngIf="data.toast_danger" class="callout callout-danger">
+    <h4>Error!</h4> {{data.message}}
+  </div>
+
+  <div *ngIf="data.toast_info" class="callout callout-info">
+    <h4>Info!</h4> {{data.message}}
+  </div>
+
+  <div *ngIf="data.toast_warning" class="callout callout-warning">
+    <h4>Warning!</h4> {{data.message}}
+  </div>
+  
+  <div *ngIf="data.toast_success" class="callout callout-success">
+    <h4>Success!</h4> {{data.message}}
+  </div>

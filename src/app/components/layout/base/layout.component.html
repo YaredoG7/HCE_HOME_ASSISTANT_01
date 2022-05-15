@@ -1,0 +1,72 @@
+
+<button mat-raised-button routerLink="/cameras">
+  <mat-icon>arrow_back</mat-icon> Back
+</button>
+<button mat-raised-button routerLink="/layout/alerts">
+  <mat-icon>video_file</mat-icon> Records
+</button>
+<br>
+<mat-card class="example-card">
+  <p>Camera Feed 1</p>
+  <mat-divider></mat-divider>
+  <br>
+  <img mat-card-image src="{{feed_1_url || '../../../../assets/OFF-AIR.jpg'}}" alt="camera not connected ?">
+  <mat-card-actions style="display:flex; justify-content: space-between; width: 100%;">
+    <button *ngIf="!cam1Streaming" mat-raised-button [disabled]="!(cam1.length > 5)" (click)="streamFeed1()"> <mat-icon style="color: green;">live_tv</mat-icon> Stream</button>
+    <button *ngIf="cam1Streaming" mat-raised-button color="warn" [disabled]="!(cam1.length > 5)" (click)="stopFeed1()">  <mat-icon>stop_circle</mat-icon> Stream</button>
+    <button *ngIf="!recording" mat-raised-button color="primary" [disabled]="!(cam1.length > 5)" (click)="startRecord()"><mat-icon>radio_button_checked</mat-icon> Recording</button>
+    <button *ngIf="recording" mat-raised-button color="warn" [disabled]="!(cam1.length > 5)" (click)="stopRecord()"><mat-icon>stop_circle</mat-icon> Recording</button>
+  <button  mat-icon-button [matMenuTriggerFor]="settings" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  </mat-card-actions>
+  <mat-menu #settings="matMenu">
+    <button mat-menu-item disabled>Feed-1 Options</button>
+    <button mat-menu-item [matMenuTriggerFor]="resolution">Cameras</button>
+    <button mat-menu-item [matMenuTriggerFor]="realResolution">Resolution</button>
+  </mat-menu>
+  <mat-menu #resolution="matMenu">
+    <section  *ngFor="let camera of currentCams">
+      <button mat-menu-item (click)="feed_1_url = formatSnapUrl(camera.ip); cam1=camera.ip; cam1Name = camera.name" > {{camera.name}}</button>
+    </section>
+  </mat-menu>
+  <mat-menu #realResolution="matMenu">
+    <section *ngFor="let resol of currentRes">
+      <button mat-menu-item (click)="adjustCamera(resol, cam1);" > {{resol}}</button>
+    </section>
+  </mat-menu>
+</mat-card>
+<mat-card class="example-card">
+  <p>Camera Feed 2</p>
+  <mat-divider></mat-divider>
+  <br>
+  <img mat-card-image src="{{feed_1_url || '../../../../assets/OFF-AIR.jpg'}}" alt="camera not connected ?">
+  <mat-card-actions style="display:flex; justify-content: space-between; width: 100%;">
+    <button *ngIf="!cam1Streaming" mat-raised-button [disabled]="!(cam1.length > 5)" (click)="streamFeed1()"> <mat-icon style="color: green;">live_tv</mat-icon> Stream</button>
+    <button *ngIf="cam1Streaming" mat-raised-button color="warn" [disabled]="!(cam1.length > 5)" (click)="stopFeed1()">  <mat-icon>stop_circle</mat-icon> Stream</button>
+    <button *ngIf="!recording" mat-raised-button color="primary" [disabled]="!(cam1.length > 5)" (click)="startRecord()"><mat-icon>radio_button_checked</mat-icon> Recording</button>
+    <button *ngIf="recording" mat-raised-button color="warn" [disabled]="!(cam1.length > 5)" (click)="stopRecord()"><mat-icon>stop_circle</mat-icon> Recording</button>
+  <button  mat-icon-button [matMenuTriggerFor]="settings" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  </mat-card-actions>
+  <mat-menu #settings="matMenu">
+    <button mat-menu-item disabled>Feed-1 Options</button>
+    <button mat-menu-item [matMenuTriggerFor]="resolution">Cameras</button>
+    <button mat-menu-item [matMenuTriggerFor]="realResolution">Resolution</button>
+  </mat-menu>
+  <mat-menu #resolution="matMenu">
+    <section  *ngFor="let camera of currentCams">
+      <button mat-menu-item (click)="feed_1_url = formatSnapUrl(camera.ip); cam1=camera.ip; cam1Name = camera.name" > {{camera.name}}</button>
+    </section>
+  </mat-menu>
+  <mat-menu #realResolution="matMenu">
+    <section *ngFor="let resol of currentRes">
+      <button mat-menu-item (click)="adjustCamera(resol, cam1);" > {{resol}}</button>
+    </section>
+  </mat-menu>
+</mat-card>
+
+<button mat-fab  class="fixed-bottom-right" routerLink="/home">
+  <mat-icon [ngClass]="{'spin-reverse':loading}" aria-label="Refresh">home</mat-icon>
+</button>

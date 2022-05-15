@@ -1,0 +1,62 @@
+<mat-card class="col info-card" style="display: flex; ">
+  <div >
+    <button routerLink="/layout/base" mat-raised-button style="color: green;">
+      <mat-icon >wifi_tethering</mat-icon>
+      LIVE
+    </button>
+  </div> &nbsp;
+  <div >
+    <button routerLink="/cameras/details/search" mat-raised-button style="color: rgb(0, 122, 203);">
+      <mat-icon >linked_camera</mat-icon>
+      Search
+    </button>
+  </div> &nbsp;
+  <div >
+    <button routerLink="/cameras/new" mat-raised-button style="color: rgb(180, 104, 5);" >
+      <mat-icon >add_circle</mat-icon>
+      Add
+    </button>
+  </div>
+</mat-card>
+<div class="user-list-container">
+  <div class="table-responsive clearfix" *ngIf="devices">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="30">
+            <!-- <mat-checkbox (click)="checkAll()"></mat-checkbox> -->
+          </th>
+          <th>HCE-Id</th>
+          <th>Name</th>
+          <th>Ip Address</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of devices">
+          <td width="30">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>network_ping</mat-icon> Ping
+              </button>
+              <button mat-menu-item>
+                <mat-icon>delete</mat-icon> Delete
+              </button>
+            </mat-menu></td>
+            <td>
+            <a routerLink="/cameras/edit/{{user.device_id}}">{{user.device_id}}</a>
+          </td>
+          <td>{{user.device_name }}</td>
+          <td>{{user.device_ip}}</td>
+          <td>{{user.isActive}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button (click)="onRefresh()" mat-fab class="fixed-bottom-right">
+    <mat-icon aria-label="Add user">cached</mat-icon>
+  </button>
+</div>

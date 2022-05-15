@@ -1,0 +1,72 @@
+<button mat-raised-button routerLink="/cameras">
+  <mat-icon>arrow_back</mat-icon> Back
+</button>
+<br>
+<mat-chip-list style="padding-left:2%;">
+  <mat-card-subtitle>Add new camera profile</mat-card-subtitle>
+</mat-chip-list>
+<mat-divider></mat-divider>
+<form class="login" #login="ngForm">
+<section style="padding-left:5%;">
+  <mat-form-field style="padding-top: 5px;">
+    <mat-label>Name:</mat-label>
+    <input matInput placeholder="DOOR_001" autofocus name="device-name" [(ngModel)]="device.device_name" >
+    <mat-icon matSuffix>qr_code</mat-icon>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Host Ip:</mat-label>
+    <input matInput placeholder="192.168.20.255" autofocus name="device-ip" [(ngModel)]="device.device_ip" >
+    <mat-icon matSuffix>lan</mat-icon>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Group:</mat-label>
+    <input matInput placeholder="DOOR_CAMS" autofocus name="device-group" [(ngModel)]="device.device_group" >
+    <mat-icon matSuffix>group_work</mat-icon>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Mac Address:</mat-label>
+    <input matInput placeholder="" autofocus name="device-group" [(ngModel)]="device.device_mac" >
+    <mat-icon matSuffix>dns</mat-icon>
+  </mat-form-field>
+
+  <section class="example-section">
+    <mat-card-subtitle class="example-margin" >Operations:</mat-card-subtitle>
+    <mat-checkbox name="livestream" class="example-margin" [(ngModel)]="device.metadata.can_stream">Live Stream</mat-checkbox>
+    <mat-checkbox name="recordvideo" class="example-margin" [(ngModel)]="device.metadata.can_record">Record Videos</mat-checkbox>
+  </section>
+
+  <mat-form-field>
+    <mat-label>Resolution</mat-label>
+    <mat-select name="rezzz" [(ngModel)]="device.metadata.resolution">
+      <mat-option value="9">1280x1024 (Full-HD)</mat-option>
+      <mat-option value="8">1024x768 (HD)</mat-option>
+      <mat-option value="7">800x600 (cctv)</mat-option>
+      <mat-option value="6">640x48</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Video records</mat-label>
+    <mat-select name="viddrec"  [(ngModel)]="device.metadata.vid_record">
+      <mat-option value="5">7 days (00:30 min segement)</mat-option>
+      <mat-option value="4">7 days (01:00 hr segement)</mat-option>
+      <mat-option value="3">1 month</mat-option>
+      <mat-option value="2">3 months</mat-option>
+    </mat-select>
+    <mat-hint>Days video records will be stored</mat-hint>
+  </mat-form-field>
+</section>
+<mat-divider></mat-divider>
+<br>
+<section style="padding-left: 2%;" >
+  <button mat-raised-button color="primary"  type="submit" (click)="onSave(login.valid)">
+    <mat-icon>save</mat-icon> {{editMode == 1 ? 'Update': 'Register'}}
+  </button>
+    <button *ngIf="editMode == 0" mat-raised-button routerLink="/cameras">
+      <mat-icon>backspace</mat-icon> Clear
+    </button>
+    <button *ngIf="editMode == 1" mat-raised-button routerLink="/cameras/details/{{device.device_id}}">
+      <mat-icon>backspace</mat-icon>   Clear
+    </button>
+</section>
+</form>
+

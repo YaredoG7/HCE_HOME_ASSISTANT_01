@@ -1,0 +1,105 @@
+<mat-card class="example-card-1" style="background: url('../../../assets/roto_1.jpg') center / cover;">
+  <div style="background: rgba(111, 111, 111, 0.7); color: #fff; display: flex; align-items: center; flex-direction: column;">
+  <mat-card-title>
+    <small>{{PMP001 || 'HCE_Water_PMP001'}} / የታንከር ፓምፕ</small>
+  </mat-card-title>
+  <mat-card-content>
+    <section *ngIf="!HCE_LOCK_001" style="text-align: center;">
+      <mat-icon aria-hidden="false" color="warn" aria-label="It is Locked">stop_circle</mat-icon><br>
+      Status: <b>STOPPED</b> 
+    </section>
+    <section *ngIf="HCE_LOCK_001">
+      Status: <b>RUNNING</b> <mat-icon aria-hidden="false" color="primary" aria-label="It is un-locked">play_circle</mat-icon>
+    </section>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+      <button (click)="RestePin('HCE_LED_001')" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+
+  </mat-card-actions>
+</div>
+</mat-card>
+<br><br>
+<mat-divider></mat-divider>
+<mat-card class="example-card-2" style="background: url('../../../assets/sprinkler.jpg') center / cover;">
+  <div style="background: rgba(111, 111, 111, 0.7); color: #fff; display: flex; align-items: center; flex-direction: column;">
+  <mat-card-title>
+    <small>{{PMP002 || 'HCE_Water_PMP002'}} / የውሃ ፓምፕ 02</small>
+  </mat-card-title>
+  <mat-card-content>
+    <section *ngIf="!HCE_LOCK_001" style="text-align: center;">
+      <mat-icon aria-hidden="false" color="warn" aria-label="It is Locked">stop_circle</mat-icon><br>
+      Status: <b>STOPPED</b> 
+    </section>
+    <section *ngIf="HCE_LOCK_001">
+      Status: <b>RUNNING</b> <mat-icon aria-hidden="false" color="primary" aria-label="It is un-locked">play_circle</mat-icon>
+    </section>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+      <button mat-fab color="primary" (click)="RestePin('HCE_LED_002')" aria-label="Example icon button with a delete icon">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+
+  </mat-card-actions>
+</div>
+</mat-card>
+
+<!--  
+<section>
+  <mat-card>
+    <mat-card-title>Flat Buttons</mat-card-title>
+    <mat-card-content>
+      <div class="button-row">
+        <button mat-button>Basic</button>
+        <button mat-button color="primary">Primary</button>
+        <button mat-button color="accent">Accent</button>
+        <button mat-button color="warn">Warn</button>
+        <button mat-button disabled>Disabled</button>
+        <a mat-button routerLink=".">Link</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section>
+  <mat-card>
+    <mat-card-title>Raised Buttons</mat-card-title>
+    <mat-card-content>
+      <div class="button-row">
+        <button mat-raised-button>Basic</button>
+        <button mat-raised-button color="primary">Primary</button>
+        <button mat-raised-button color="accent">Accent</button>
+        <button mat-raised-button color="warn">Warn</button>
+        <button mat-raised-button disabled>Disabled</button>
+        <a mat-raised-button routerLink=".">Link</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section>
+  <mat-card>
+    <mat-card-title>Fab Buttons</mat-card-title>
+    <mat-card-content>
+      <button mat-fab color="accent">
+        <mat-icon aria-label="Done">done</mat-icon>
+      </button>
+      <button mat-fab color="primary">
+        <mat-icon aria-label="Add">add</mat-icon>
+      </button>
+      <button mat-fab color="warn">
+        <mat-icon aria-label="Close">close</mat-icon>
+      </button>
+      <button mat-fab>
+        <mat-icon aria-label="Remove">remove</mat-icon>
+      </button>
+    </mat-card-content>
+  </mat-card>
+</section>
+-->
+<button mat-fab class="fixed-bottom-right" routerLink="/home">
+  <mat-icon aria-label="Edit">home</mat-icon>
+</button>

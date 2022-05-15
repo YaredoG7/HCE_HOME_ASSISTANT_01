@@ -1,0 +1,133 @@
+<div class="home">
+
+  <section class="info-cards">
+    <div class="flex-container">
+      <mat-card class="col info-card" style="display: flex; ">
+        <div routerLink="/layout/base">
+          <div class="info-card-icon ">
+            <mat-icon style="color: rgb(0, 200, 83);" >videocam</mat-icon>
+          </div>
+          <div class="info-card-content">
+            <h3>2</h3>
+            Cameras
+          </div>
+        </div>
+        <div routerLink="/lights">
+          <div class="info-card-icon">
+            <mat-icon style="color: goldenrod;">emoji_objects</mat-icon>
+          </div>
+          <div class="info-card-content" >
+            <h3>4</h3>
+             Lights
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="flex-container">
+      <mat-card class="col info-card" style="display: flex; ">
+        <div routerLink="/locks">
+          <div class="info-card-icon">
+            <mat-icon style="color: rgba(3, 155, 229,);">meeting_room</mat-icon>
+          </div>
+          <div class="info-card-content">
+            <h3>3</h3>
+            Locks
+          </div>
+        </div>
+        <div routerLink="/layout/buttons" style="padding-left: 22px;">
+          <div class="info-card-icon">
+            <mat-icon style="color: #00BCD4;">shower</mat-icon>
+          </div>
+          <div class="info-card-content" >
+            <h3>2</h3>
+              Pumps
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </section>
+  <br>
+  <div class="col">
+    <p style="text-align:center;">Device status:</p>
+    <mat-divider></mat-divider>
+    <canvas baseChart [data]="pieChartData" [colors]="pichartColors" [labels]="pieChartLabels" [options]="pieChartOptions" [chartType]="'pie'"></canvas>
+  </div>
+  <br>
+  <p style="text-align:center;">Quick Actions:</p>
+  <mat-divider></mat-divider>
+  <section style="display: flex; justify-content: space-between; padding: 15px 10px; ">
+    <div class="example-button-container">
+      <button (click)="showSnap()" mat-fab color="goldenrod" aria-label="">
+        <mat-icon>photo_library</mat-icon>
+      </button> <br>
+      <small>Capture Main <br> ዋና ካሜራ ፎቶ</small>
+    </div>
+    <div class="example-button-container">
+      <button (click)="unlcokMain()" mat-fab color="warn" aria-label="">
+        <mat-icon>lock_open</mat-icon>
+      </button><br>
+      <small>Unlock Main <br> ዋና ቁልፍ </small>
+    </div>
+    <div class="example-button-container">
+      <button mat-fab color="goldenrod" aria-label="">
+        <mat-icon>lightbulb</mat-icon> 
+      </button><br>
+      <small>Main Light <br> ዋና መብራት</small>
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+  <section style="display: flex; justify-content: space-between; padding: 15px 10px; ">
+    <div class="example-button-container">
+      <mat-card class="col chart first-chart">
+        <mat-card-title>
+          <div flex class="widget-header">
+            <div style="text-align: center;" fill><small>Power usage monitor <br> ( advanced )</small> </div>
+            <div class="example-tooltip">
+              <button mat-icon-button matTooltipPosition="above" matTooltip="Solar Battery Status"
+              matTooltipClass="example-tooltip-green">
+                <mat-icon color="accent">battery_5_bar</mat-icon> <small style="color: green">72%</small>
+              </button> &nbsp; &nbsp;
+              <button mat-icon-button matTooltipPosition="above" matTooltip="Refresh data" color="warn"
+              matTooltipClass="example-tooltip-red">
+                <mat-icon>cached</mat-icon>
+              </button>
+              
+            </div>
+          </div>
+        </mat-card-title>
+        <mat-card-content>
+          <canvas baseChart [data]="lineChartData" [colors]="lineChartColors" [labels]="lineChartLabels" [options]="powerChartOptions" [chartType]="'line'"></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <canvas baseChart
+  [datasets]="bubbleChartData"
+  [options]="bubbleChartOptions"
+  [colors]="bubbleChartColors"
+  [legend]="bubbleChartLegend"
+  [chartType]="bubbleChartType">
+</canvas>
+<section class="text-center">
+ <br>
+  <mat-divider></mat-divider>
+  <br><br>
+ <small>Brought to you by :</small><p>HAHU COMPUTERS <br> ሀሁ ኮምፒውተር ኢንጂነሪንግ </p>
+ <div>
+  <a  target="_blank" href="https://hahucomputers.com/">
+    <div>
+      <img style="transform: scale(.6);" mat-card-lg-image src="/assets/192x192.png" >
+    </div>
+  </a>
+ </div>
+</section>
+
+    <!-- {{messageFromServer}}<br>
+  <button (click)="sendMessageToServer()">Send Message to Server</button>
+  <button (click)="closeSocket()">Disconnect</button>
+  <div>{{status}}</div> -->
+  <button mat-fab  class="fixed-bottom-right" (click)="onRefresh()">
+    <mat-icon [ngClass]="{'spin-reverse':loading}" aria-label="Refresh">cached</mat-icon>
+  </button>
+</div>

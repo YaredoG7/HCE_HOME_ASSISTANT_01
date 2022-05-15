@@ -1,0 +1,79 @@
+<button mat-raised-button routerLink="/cameras">
+  <mat-icon>arrow_back</mat-icon> Back
+</button>
+<br>
+
+<mat-chip-list style="padding-left:2%;">
+  <mat-card-subtitle>Add new Lock profile</mat-card-subtitle>
+</mat-chip-list>
+<mat-divider></mat-divider>
+<form class="login" #login="ngForm">
+<section style="padding-left:5%;">
+  <mat-form-field style="padding-top: 5px;">
+    <mat-label>Name: </mat-label>
+    <input matInput placeholder="Cupboard_Office_001" autofocus name="device-name" [(ngModel)]="device.device_name" >
+    <mat-icon matSuffix>qr_code</mat-icon>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Type: </mat-label>
+    <mat-select name="LockType" [(ngModel)]="device.metadata.resolution">
+      <mat-option> Drawer Lock </mat-option>
+      <mat-option> Cupboard Lock </mat-option>
+      <mat-option> Safe Lock </mat-option>
+      <mat-option> Door Lock </mat-option>
+      <mat-option> Other </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>PIN Code:
+    <mat-icon matSuffix>vp_key</mat-icon>
+    </mat-label>
+    <input matInput placeholder="****" autofocus name="device-isp" type="number" minlength="4" maxlength="4" required [(ngModel)]="device.device_pin" >
+    <mat-hint>Must be 4 digit !</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Loacation:</mat-label>
+    <input matInput placeholder="Main bedroom cupboard" autofocus name="device-name" [(ngModel)]="device.metadata.vid_record" >
+    <mat-icon matSuffix>pin_drop</mat-icon>
+    <mat-hint>specific location where its installed</mat-hint>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Host Ip:</mat-label>
+    <input matInput placeholder="192.168.20.255" autofocus name="device-ifp" [(ngModel)]="device.device_ip" >
+    <mat-icon matSuffix>lan</mat-icon>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Group:</mat-label>
+    <input matInput placeholder="HOME_CUPBOARD" autofocus name="device-grfosfup" [(ngModel)]="device.device_group" >
+    <mat-icon matSuffix>group_work</mat-icon>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Serial:</mat-label>
+    <input matInput placeholder="" autofocus name="device-grofsup" [(ngModel)]="device.device_mac" >
+    <mat-icon matSuffix>tag</mat-icon>
+  </mat-form-field>
+  <div>
+    <br>
+    <mat-card-subtitle>Power cut-off</mat-card-subtitle>
+    <mat-radio-group name="powercutoff" [(ngModel)]="device.metadata.resolution">
+      <mat-radio-button value="auto">keep locked</mat-radio-button>
+      <mat-radio-button value="always">unlock </mat-radio-button> <br><br>
+      <mat-hint>lock status when power is interrupted </mat-hint>
+    </mat-radio-group>
+   
+  </div>
+</section>
+  <mat-divider></mat-divider>
+  <br>
+  <section style="padding-left: 2%;" >
+    <button mat-raised-button color="primary" type="submit" (click)="onSave(login.valid)">
+      <mat-icon>save</mat-icon> Register
+    </button>
+      <button *ngIf="editMode == 0" mat-raised-button routerLink="/locks">
+        <mat-icon>backspace</mat-icon> Clear
+      </button>
+      <button *ngIf="editMode == 1" mat-raised-button routerLink="/locks">
+        <mat-icon>backspace</mat-icon>   Clear
+      </button>
+  </section>
+</form>

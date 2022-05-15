@@ -1,0 +1,73 @@
+<mat-card class="example-card-1">
+  <div style="background: rgba(111, 111, 111, 0.7); color: #fff; display: flex; align-items: center; flex-direction: column;">
+  <mat-card-title>
+    <small>{{LOCK_NAME || 'HCE_LOCK_001'}} / የኮመዲና ቁልፍ</small>
+  </mat-card-title>
+  <mat-card-content>
+    <section *ngIf="!HCE_LOCK_001" style="text-align: center;">
+      <mat-icon aria-hidden="false" color="warn" aria-label="It is Locked">lock</mat-icon><br>
+      Status: <b>Locked</b> 
+    </section>
+    <section *ngIf="HCE_LOCK_001">
+      Status: <b>Unlocked</b> <mat-icon aria-hidden="false" color="primary" aria-label="It is un-locked">lock_open</mat-icon>
+    </section>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+      <button (click)="RestePin('HCE_LED_001')" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>key</mat-icon>
+      </button>
+
+  </mat-card-actions>
+</div>
+</mat-card>
+<mat-card class="example-card-2">
+  <div style="background: rgba(111, 111, 111, 0.7); color: #fff; display: flex; align-items: center; flex-direction: column;">
+  <mat-card-title>
+    <small>{{LOCK_NAME2 || 'HCE_LOCK_002'}} / የሎከር ቁልፍ</small>
+  </mat-card-title>
+  <mat-card-content>
+    <section *ngIf="!HCE_LOCK_002" style="text-align: center;">
+      <mat-icon aria-hidden="false" color="warn" aria-label="It is Locked">lock</mat-icon><br>
+      Status: <b>Locked</b> 
+    </section>
+    <section *ngIf="HCE_LOCK_002">
+      Status: <b>Unlocked</b> <mat-icon aria-hidden="false" color="primary" aria-label="It is un-locked">lock_open</mat-icon>
+    </section>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+      <button mat-fab color="primary" (click)="RestePin('HCE_LED_002')" aria-label="Example icon button with a delete icon">
+        <mat-icon>key</mat-icon>
+      </button>
+
+  </mat-card-actions>
+</div>
+</mat-card>
+<mat-card class="example-card-3">
+  <div style="background: rgba(111, 111, 111, 0.7); color: #fff; display: flex; align-items: center; flex-direction: column;">
+  <mat-card-title>
+    <small>{{LOCK_NAME3 || 'HCE_LOCK_003'}} / የበር ቁልፍ</small>
+  </mat-card-title>
+  <mat-card-content>
+    <section *ngIf="!HCE_LOCK_003" style="text-align: center;">
+      <mat-icon aria-hidden="false" color="warn" aria-label="It is Locked">lock</mat-icon><br>
+      Status: <b>Locked</b> 
+    </section>
+    <section *ngIf="HCE_LOCK_003">
+      Status: <b>Unlocked</b> <mat-icon aria-hidden="false" color="primary" aria-label="It is un-locked">lock_open</mat-icon>
+    </section>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+      <button mat-fab color="primary" (click)="RestePin('HCE_LED_003')" aria-label="Example icon button with a delete icon">
+        <mat-icon>key</mat-icon>
+      </button>
+
+  </mat-card-actions>
+</div>
+</mat-card>
+
+<button mat-fab class="fixed-bottom-right" routerLink="/home">
+  <mat-icon aria-label="Edit">home</mat-icon>
+</button>

@@ -1,0 +1,29 @@
+<small mat-dialog-title>{{ data.title }}</small>
+<div mat-dialog-content>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Old pin</mat-label>
+      <input [(ngModel)]="data.oldPin" matInput  placeholder="****">
+      <mat-icon matSuffix>vpn_googleone</mat-icon>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>New pin</mat-label>
+      <input matInput [(ngModel)]="data.newPin" placeholder="****">
+      <mat-icon matSuffix>vpn_googleone</mat-icon>
+    </mat-form-field>
+  </p>
+
+<section>
+  <button mat-raised-button color="accent">
+    <mat-icon>mail</mat-icon>
+    Recover
+  </button>
+
+</section>  
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" tabindex="2">Save</button>
+  <button mat-button [mat-dialog-close]="false" tabindex="-1">Close</button>
+</div>

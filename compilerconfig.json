@@ -1,0 +1,7 @@
+[
+  {
+    "glob": "**/*",
+    "input": "./node_modules/ngx-video-list-player/assets",
+    "output": "/assets/"
+  }      
+]

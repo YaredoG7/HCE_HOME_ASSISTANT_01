@@ -1,0 +1,33 @@
+    <mat-card *ngFor="let light of LIGHTS; let i=index" [ngClass]="light?.class">
+      <div style="background: rgba(111, 111, 111, 0.7); color: #fff; display: flex; align-items: center; flex-direction: column;">
+      <mat-card-title>
+        <!-- <small>{{light?.desc}}</small> -->
+        <small>{{light?.title}}</small>
+      </mat-card-title>
+      <mat-card-content>
+        <span style="display: flex; align-items:center; justify-content: center; transform: scale(2);">
+          <mat-icon  [ngStyle]="{'color':light.status ? 'gold': 'red'}" aria-label="lightStat" >lightbulb</mat-icon>
+        </span>
+        <p>Default: <small>{{light?.name}}</small></p>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions style="min-height: 50px;">
+        <button mat-raised-button color="accent" [disabled]="light.mqqtStatus">
+          <span *ngIf="!light.mqqtStatus">
+          <mat-slide-toggle  (change)="TOGGLE_LED(light?.name, i);" [ngModel]="light.status"></mat-slide-toggle>
+          {{light.status ? 'ON' : 'OFF'}}  
+        </span>
+        <span *ngIf="light.mqqtStatus" style="padding: 2px 5px; color:#fff; display: flex; align-items: center;">
+          <mat-icon  [ngClass]="{'spin-reverse':light.mqqtStatus}" aria-label="Refresh">cached</mat-icon>
+          switching light...
+        </span>
+      </button>
+     </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar class="hide-md" mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+    </div>
+    </mat-card>
+<button mat-fab class="fixed-bottom-right" routerLink="/home">
+  <mat-icon aria-label="Edit">home</mat-icon>
+</button>

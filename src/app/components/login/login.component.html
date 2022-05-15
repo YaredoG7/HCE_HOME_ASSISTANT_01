@@ -1,0 +1,31 @@
+<mat-sidenav-container fullscreen>
+  <form class="login" #login="ngForm">
+  <div class="login-container">
+    <div class="center">
+      <img src="./assets/logo.png" class="margin-bottom-20" style="max-width: 90px; max-height: 90px;" />
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Email" autofocus [(ngModel)]="_u.email" name="email" type="email">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Password" [(ngModel)]="_u.password" name="password" type="password">
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button type="submit"(click)="loginUser(login.valid)" color="primary">Login</button>
+      
+    </div>
+  </div>
+  <br>
+  <hr style="width: 80%; ">
+  <section style="display: flex; width: 60%; justify-content: flex-end;">
+    <button type="submit" mat-icon-button color="accent">
+      <mat-icon>lock_reset</mat-icon>
+      Forgot Password</button>
+  </section>
+
+</form>
+</mat-sidenav-container>

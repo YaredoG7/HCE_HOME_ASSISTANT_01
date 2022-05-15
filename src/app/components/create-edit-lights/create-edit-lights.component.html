@@ -1,0 +1,61 @@
+<button mat-raised-button routerLink="/cameras">
+  <mat-icon>arrow_back</mat-icon> Back
+</button>
+<br>
+
+<mat-chip-list style="padding-left:2%;">
+  <mat-card-subtitle>Add new LED Light profile</mat-card-subtitle>
+</mat-chip-list>
+<mat-divider></mat-divider>
+<form class="login" #login="ngForm">
+<section style="padding-left:5%;">
+  <mat-form-field style="padding-top: 5px;">
+    <mat-label>Name:</mat-label>
+    <input matInput placeholder="name of light" autofocus name="device-nabcme" [(ngModel)]="device.device_name" >
+    <mat-icon matSuffix>qr_code</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Loacation:</mat-label>
+    <input matInput placeholder="Main Bedroom 01" autofocus name="device-namce" [(ngModel)]="device.metadata.vid_record" >
+    <mat-icon matSuffix>location_automation</mat-icon>
+    <mat-hint align="end">where its installed </mat-hint>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Host Ip:</mat-label>
+    <input matInput placeholder="192.168.20.255" autofocus name="devibce-ip" [(ngModel)]="device.device_ip" >
+    <mat-icon matSuffix>lan</mat-icon>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Group:</mat-label>
+    <input matInput placeholder="BED_ROOM" autofocus name="device-grboup" [(ngModel)]="device.device_group" >
+    <mat-icon matSuffix>group_work</mat-icon>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Mac Address:</mat-label>
+    <input matInput placeholder="" autofocus name="device-grcoup" [(ngModel)]="device.device_mac" >
+    <mat-icon matSuffix>dns</mat-icon>
+  </mat-form-field>
+
+  <div>
+    <mat-card-subtitle>HEC IoT Light?</mat-card-subtitle>
+    <mat-radio-group name="iotlights" [(ngModel)]="device.metadata.resolution">
+      <mat-radio-button value="auto">Yes</mat-radio-button>
+      <mat-radio-button value="always">No</mat-radio-button> <br><br>
+    </mat-radio-group>
+   
+  </div>
+</section>
+<mat-divider></mat-divider>
+<br>
+ <section style="padding-left: 2%;" >
+    <button mat-raised-button color="primary"  type="submit" (click)="onSave(login.valid)">
+      <mat-icon>save</mat-icon> Register
+    </button>
+      <button *ngIf="editMode == 0" mat-raised-button routerLink="/lights">
+        <mat-icon>backspace</mat-icon> Clear
+      </button>
+      <button *ngIf="editMode == 1" mat-raised-button routerLink="/lights">
+        <mat-icon>backspace</mat-icon>   Clear
+      </button>
+  </section>
+</form>

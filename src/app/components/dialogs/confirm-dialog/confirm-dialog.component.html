@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <section *ngIf="!data.isSnap">
+  {{ data.message }} <br>
+  <div *ngIf="data.unlockpin">
+    <mat-form-field appearance="standard">
+      <mat-label>Enter 4-digit pin code: </mat-label>
+      <input matInput [(ngModel)]="data.newPin" placeholder="****">
+    </mat-form-field>
+  </div>
+  </section>
+  <section *ngIf="data.isSnap">
+    <img  src="{{data.url || '../../../../assets/OFF-AIR.jpg'}}" style="max-width: 250px; max-height: 350px;" alt="" srcset="">
+  </section>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="warn" [mat-dialog-close]="false" tabindex="-1">
+    <mat-icon aria-label="Done">cancel</mat-icon>
+    Cancel</button>
+  <button mat-raised-button mat-button color="accent" [mat-dialog-close]="true" tabindex="2">
+    <mat-icon aria-label="Done">check_circle</mat-icon>
+    Done</button>
+
+</div>
