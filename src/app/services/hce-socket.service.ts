@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import {Observable } from 'rxjs';
+import {Observable, ReplaySubject } from 'rxjs';
 export const WS_ENDPOINT = environment.wsEndpoint;
 
 @Injectable()
 export class HceSocketService {
   ws: WebSocket;
   socketIsOpen = 1;                                                
+  public deviceStatusChanged$ : ReplaySubject<any> = new ReplaySubject(1);
 
   createObservableSocket(): Observable<any> {           
      this.ws = new WebSocket(environment.wsEndpoint);                                 
     return new Observable(                                         
        observer => {
         this.ws.onmessage = (event) =>
-        {console.log(event); observer.next(event.data);}                                
+        {observer.next(event.data);}                                
         this.ws.onerror = (event) => observer.error(event);        
         this.ws.onclose = (event) => observer.complete();          
         return () =>

@@ -26,7 +26,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   status;          
   currentTime: Date;
   
-  constructor(private router: Router, private apiService: HceIotCoreService,private wsService: HceSocketService,) { }
+  constructor(private router: Router, private apiService: HceIotCoreService,private wsService: HceSocketService,private observableService: ObservableService) { }
 
   /**
   * Gets current side nav mode for page refresh, if any.
@@ -94,27 +94,27 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     // this.apiService.showAlert('UTOPIA Home Assistant is ON!', {alert_info: true})
     this.wsSubscription = this.wsService.createObservableSocket()      
     .subscribe(_d => {
-      console.log(_d)
-      if(!_d.includes('#')) return '';
-      let data = _d.split("#")
-     console.log(data[0]);
-     switch (data[0]) {
+      const data = JSON.parse(_d)
+      switch (data.topic) {
        case Topics.HCE_GLOBAL:
-         this.apiService.showAlert('ALL SERVICES '+data[1] , {toast_success: true})
+         this.wsService.deviceStatusChanged$.next(data)
+         this.apiService.showAlert('SERVICES INFO: '+data.message , {toast_success: true})
          break;
-       case Topics.HCE_INFO:
+       case Topics.LED_INFO:
          // assign data here 
-         this.apiService.showAlert(data[1], {toast_info: true})
+         this.apiService.showAlert(data.message, {alert_info: true})
          break;
-         case Topics.HCE_NODE_BASE_X:
-           // assign data here 
-           let meta = data[1].split("_");
-           let device_data = {type: meta[0], id: meta[1], status: meta[2]};
-           // console.log('compiled data  ', device_data);
-           // console.log('adding device to local....')
-//              this.cookieService.set('X_HCE_IOT', JSON.stringify(device_data))
-
-         this.apiService.showAlert(data[1], {toast_info: true})
+         case Topics.PMP_INFO:
+          // assign data here 
+          this.apiService.showAlert(data.message, {alert_info: true})
+          break;
+          case Topics.LOCK_INFO:
+            // assign data here 
+            this.apiService.showAlert(data.message, {alert_info: true})
+            break;
+         case Topics.CAM_INFO:
+          // assign data here 
+         this.apiService.showAlert(data.topic, {toast_info: true})
          break;
        default:
          break;
@@ -125,6 +125,15 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
    );
   }
 
+  private showSysMessage(raw) {
+    const topic = raw.topic;
+
+    const msg = raw.message;
+    let struct = topic.split('_');
+    let txt = msg.indexOf('::') > 0 ? msg.split("::") : msg.split('_'); // expects messages to be in "HCE_LED_IS_ACTIVE, IS_XLON, IS_XLOFF ", 
+    let deviceInfo = {type: struct[1], node: struct[2]}
+    console.log(txt, 'and deviceinfo', deviceInfo)
+  }
 
   // closeSocket(){
   //   this.wsSubscription.unsubscribe();   
@@ -143,6 +152,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   //     this.currentTime = data
   //   });   
   //   this.wsService.sendMessage("ping");
+  //   console.log('sent ping to node...')
   //   setTimeout(() => {
   //     this.loading = false;
   //   }, 2000);

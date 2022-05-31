@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HceIotCoreService } from '../hce-iot-core.service';
 import {Subscription} from "rxjs";
 import { ObservableService } from '../../services/observable.service';
@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   loading: boolean = false;
   messageFromServer: string;
   wsSubscription: Subscription;                                        
@@ -27,7 +27,7 @@ export class HomeComponent {
 
 
   // update this for camera status
-  pieChartData: Array<any> = [0, 0, 3, 2];
+  pieChartData: Array<any> = [0, 0, 0, 0];
 
   pieChartLabels: Array<any> = ['Cameras', 'Lights', 'Locked', 'Running Pumps'];
   pieChart2Data: Array<any> = [[112,55]];
@@ -105,8 +105,29 @@ export class HomeComponent {
   }
 
 
-  constructor(private iotService: HceIotCoreService, private observableService: ObservableService, private cookieService: CookieService, private dialog: MatDialog) { 
+  constructor(private iotService: HceSocketService, private observableService: ObservableService, private cookieService: CookieService, private dialog: MatDialog) { 
 
+  }
+  ngOnInit(): void {
+    this.iotService.deviceStatusChanged$.subscribe(data => {
+      if(data === undefined) {return false}
+      const updateChart = data.message;
+      if(updateChart.indexOf('::')> 0) {
+       let joined = updateChart.split('::');
+       let v = joined[0].slice(-7);
+       if(v.includes('LED')) {
+         console.log(v);
+       }
+       if(v.includes('CAM')) {}
+       if(v.includes('LOCK')) {}
+       if(v.includes('PMP')) {}
+      }
+      let msg = updateChart.split('_');
+
+      if(data.message)
+
+      console.log('new data has been emitted------>', data)
+    })
   }
 
   onRefresh(){

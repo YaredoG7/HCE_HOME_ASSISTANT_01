@@ -47,12 +47,6 @@
     </div>
   </section>
   <br>
-  <div class="col">
-    <p style="text-align:center;">Device status:</p>
-    <mat-divider></mat-divider>
-    <canvas baseChart [data]="pieChartData" [colors]="pichartColors" [labels]="pieChartLabels" [options]="pieChartOptions" [chartType]="'pie'"></canvas>
-  </div>
-  <br>
   <p style="text-align:center;">Quick Actions:</p>
   <mat-divider></mat-divider>
   <section style="display: flex; justify-content: space-between; padding: 15px 10px; ">
@@ -75,6 +69,12 @@
       <small>Main Light <br> ዋና መብራት</small>
     </div>
   </section>
+  <div class="col">
+    <p style="text-align:center;">Device status:</p>
+    <mat-divider></mat-divider>
+    <canvas baseChart [data]="pieChartData" [colors]="pichartColors" [labels]="pieChartLabels" [options]="powerChartOptions" [chartType]="'pie'"></canvas>
+  </div>
+  <br>
   <mat-divider></mat-divider>
   <section style="display: flex; justify-content: space-between; padding: 15px 10px; ">
     <div class="example-button-container">

@@ -56,6 +56,7 @@ export class AlertsLayoutComponent {
 
 
   startMedia(fileName) {
+    console.log(fileName)
     this.apiService.startMedia(fileName).subscribe(res => {
       console.log(res)
       if (res) {

@@ -91,7 +91,6 @@ export class HceIotCoreService {
       data: { message: message, ...alert_type }, 
       duration: 3000
     });
-  
   }
 
 }

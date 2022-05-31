@@ -6,8 +6,8 @@
 export const environment = {
   production: false,
   // baseUrl: "https://jsonplaceholder.typicode.com"
-  baseUrl: "http://localhost:3000/api/v1",
+  baseUrl: "http://localhost:4000/api/v1",
   wsEndpoint: "ws://localhost:8080",
   hostIp: "192.168.0.*",
-  playVidUrl: "http://localhost:3000/api/v1/iot/video_stream?vid_id=FRMTD_"
+  playVidUrl: "http://localhost:4000/api/v1/iot/video_stream?vid_id="
 };

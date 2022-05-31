@@ -4,7 +4,8 @@ import { HceIotCoreService } from '../../hce-iot-core.service';
 
 @Component({
   selector: 'app-layout',
-  templateUrl: './layout.component.html'
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.css']
 })
 export class LayoutComponent {
   devices: DeviceProfile [] = [];
@@ -17,7 +18,7 @@ export class LayoutComponent {
   cam2: DeviceProfile = <DeviceProfile>{};
   cam1Streaming: boolean = false;
   cam2Streaming: boolean = false;
-   
+  loading: boolean = false;  
 
 
   // startDate = Date.now() - (15 * 1000); // current time minus 15 seconds

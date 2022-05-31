@@ -14,3 +14,11 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+div.video-main-container #media-player {
+  width: 100% !important;
+  padding-top: 0;
+}
+div.video-list-container {
+  padding-top: 1rem;
+  width: 100% !important;
+}

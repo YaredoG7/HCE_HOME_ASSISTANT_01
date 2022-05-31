@@ -1,0 +1,42 @@
+mat-grid-tile {
+    background: lightblue;
+  }
+
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
+    /* some CSS here */
+    .example-card {
+        background: red;
+    }
+
+   section#MobileView {
+        display: none;
+    }
+
+    section#DesktopView {
+        display: block;
+    }
+  }
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px) {
+    /* some CSS here */
+    
+    section#MobileView {
+        display: block;
+    }
+
+    section#DesktopView {
+        display: none;
+    }
+  }
+
+
+  /* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+    /* some CSS here */
+    .example-card {
+        background: yellow;
+    }
+  }

@@ -59,17 +59,4 @@ status;
     }, 1000);
    // console.log('sending... '+ LED_ACTION)
   }
-
-
-  // LED 2
-
-
-
-
-  // LED 3
-
-
-
-  // LED 4
-
 }
